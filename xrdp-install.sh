@@ -1,19 +1,19 @@
 #!/bin/bash
 
 if [[ $EUID -ne 0 ]]; then
-  echo "* This script must be executed with root privileges (sudo)." 1>&2
+  echo "* This Script Must Be Executed With Root Privileges ( Sudo )" 1>&2
   exit 1
 fi
 
 # check for curl
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* curl is required in order for this script to work."
-  echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
+  echo "* Curl Is Required In Order For This Script To Work."
+  echo "* Install Using Apt ( Debian And Derivatives ) Or Yum / Dnf ( CentOS )"
   exit 1
 fi
 
 output() {
-  echo -e "\033[0;34m[CRDXcript] ${1} \033[0m"
+  echo -e "\033[0;34m[VrydenRDP] ${1} \033[0m"
 }
 ask() {
   GC='\033[0;32m'
@@ -28,13 +28,13 @@ asknl() {
 error() {
   RC='\033[0;31m'
   NC='\033[0m'
-  echo -e "${RC}ERROR: ${1}${NC}"
+  echo -e "${RC}Error: ${1}${NC}"
 }
 download() {
-output "Downloading and Installing XRDP..."
+output "Downloading And Installing XRDP..."
 sudo apt update
 sudo apt install xrdp -y
-output "Adding XRDP to ssl-cert group"
+output "Adding XRDP To ssl-cert Group"
 sudo usermod -a -G ssl-cert xrdp
 }
 chgport() {
